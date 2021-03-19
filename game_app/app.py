@@ -1,5 +1,4 @@
 from typing import Dict
-
 from game_engine import TicTacToeGame, TicTacToeGameInfo, TicTacToeTurn
 
 
@@ -10,10 +9,19 @@ class TicTacToeApp:
         self._games: Dict[str, TicTacToeGame] = {}
 
     def start_game(self, first_player_id: str, second_player_id: str) -> TicTacToeGameInfo:
-        raise NotImplementedError
+        new_game = str(len(self._games) + 1)
+        
+        self._games[new_game] = TicTacToeGame(
+            game_id = str(len(self._games) + 1),
+            first_player_id=first_player_id,
+            second_player_id=second_player_id)
 
-    def get_game_by_id(self, game_id: str, user_id: str) -> TicTacToeGameInfo:
-        raise NotImplementedError
+        return self._games[new_game].get_game_info()
+
+        # ttt_game => add to dict => tttgi
+        
+    def get_game_by_id(self, game_id: str) -> TicTacToeGameInfo:
+        return self._games[game_id].get_game_info()   #probably right
 
     def do_turn(self, turn: TicTacToeTurn, game_id: str) -> TicTacToeGameInfo:
-        raise NotImplementedError
+        return self._games[game_id].do_turn(turn)

@@ -3,27 +3,16 @@ from typing import Callable, List, Optional
 from .tic_tac_toe_common_lib import TicTacToeTurn, TicTacToeGameInfo, AbstractTicTacToeGame
 
 class TicTacToeGame(AbstractTicTacToeGame):
-<<<<<<< HEAD
-    def __init__(self, game_id: str, first_player_id: str, second_player_id: str, 
-        strategy: Optional[Callable[[TicTacToeGameInfo], TicTacToeTurn]] = None) -> None:
-        self.__game_id = game_id
-        self.__first_player_id = first_player_id
-        self.__second_player_id = second_player_id
-        self.__winner_id = ""
-        self.__strategy = strategy
-        self.__turns: List[TicTacToeTurn] = []
-=======
     """Наследуемся от абстрактного класса и реализуем ручками все методы"""
 
     def __init__(self, game_id: str, first_player_id: str, second_player_id: str,
                  strategy: Optional[Callable[[TicTacToeGameInfo], TicTacToeTurn]] = None) -> None:
         self._game_id = game_id
-        self._first_player_id = first_player_id
-        self._second_player_id = second_player_id
-        self._winner_id = ""
-        self._strategy = strategy
-        self._turns: List[TicTacToeTurn] = []
->>>>>>> tasks
+        self.__first_player_id = first_player_id
+        self.__second_player_id = second_player_id
+        self.__winner_id = ""
+        self.__strategy = strategy
+        self.__turns: List[TicTacToeTurn] = []
 
 
     def current_player_id(self) -> str:
@@ -103,13 +92,13 @@ class TicTacToeGame(AbstractTicTacToeGame):
                 [" ", " ", " "],
                 [" ", " ", " "]
             ],
-            sequence_of_turns=deepcopy(self._turns),
-            first_player_id=self._first_player_id,
-            second_player_id=self._second_player_id,
-            winner_id=self._winner_id
+            sequence_of_turns=deepcopy(self.__turns),
+            first_player_id=self.__first_player_id,
+            second_player_id=self.__second_player_id,
+            winner_id=self.__winner_id
         )
-        for turn in self._turns:
-            if turn.player_id == self._first_player_id:
+        for turn in self.__turns:
+            if turn.player_id == self.__first_player_id:
                 symb = "X"
             else:
                 symb = "O"
